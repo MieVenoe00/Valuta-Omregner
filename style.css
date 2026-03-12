@@ -208,17 +208,6 @@ body {
 	user-select: none;
 }
 
-.currency-row::before {
-	content: "";
-	position: absolute;
-	top: -1.5px;
-	left: 12px;
-	width: 6px;
-	height: 6px;
-	background: var(--border);
-	transition: background var(--transition);
-}
-
 .currency-row:focus-within {
 	border-color: var(--accent);
 	box-shadow:
@@ -226,17 +215,9 @@ body {
 		var(--shadow);
 }
 
-.currency-row:focus-within::before {
-	background: var(--accent);
-}
-
 .currency-row.is-base {
 	border-color: var(--accent3);
 	background: linear-gradient(135deg, #20204a 0%, #1e1a40 100%);
-}
-
-.currency-row.is-base::before {
-	background: var(--accent3);
 }
 
 /* === DRAG STATES === */
@@ -371,6 +352,10 @@ body {
 	text-overflow: ellipsis;
 	max-width: 80px;
 	line-height: 1;
+}
+
+.currency-row::before {
+	display: none !important;
 }
 
 /* === INPUT FIELD === */
