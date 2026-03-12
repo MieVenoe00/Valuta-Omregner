@@ -293,7 +293,9 @@ body {
 	opacity: 1;
 	pointer-events: all;
 	border-radius: 6px;
-	transition: opacity var(--transition), background var(--transition);
+	transition:
+		opacity var(--transition),
+		background var(--transition);
 }
 
 .drag-handle:hover {
@@ -315,7 +317,7 @@ body {
 .drag-dots::before,
 .drag-dots::after,
 .drag-dots span {
-	content: '';
+	content: "";
 	display: block;
 	width: 14px;
 	height: 2px;
