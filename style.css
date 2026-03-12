@@ -276,21 +276,65 @@ body {
 	opacity: 0;
 }
 
-/* === DRAG HANDLE — hidden, long-press activates drag === */
+/* === DRAG HANDLE === */
 .drag-handle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  touch-action: none;
-  flex-shrink: 0;
-  -webkit-user-select: none;
-  user-select: none;
-  opacity: 0;
-  pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	width: 26px;
+	padding: 8px 4px;
+	cursor: grab;
+	touch-action: none;
+	flex-shrink: 0;
+	-webkit-user-select: none;
+	user-select: none;
+	opacity: 1;
+	pointer-events: all;
+	border-radius: 6px;
+	transition: opacity var(--transition), background var(--transition);
 }
 
-.drag-dots { display: none; }
+.drag-handle:hover {
+	background: rgba(123, 123, 255, 0.1);
+}
+
+.drag-handle:active {
+	cursor: grabbing;
+}
+
+/* Three clean horizontal lines — no box-shadow squares */
+.drag-dots {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	pointer-events: none;
+}
+
+.drag-dots::before,
+.drag-dots::after,
+.drag-dots span {
+	content: '';
+	display: block;
+	width: 14px;
+	height: 2px;
+	border-radius: 2px;
+	background: var(--text3);
+	transition: background var(--transition);
+}
+
+.drag-handle:hover .drag-dots::before,
+.drag-handle:hover .drag-dots::after,
+.drag-handle:hover .drag-dots span {
+	background: var(--accent2);
+}
+
+.drag-ghost .drag-dots::before,
+.drag-ghost .drag-dots::after,
+.drag-ghost .drag-dots span {
+	background: var(--accent2);
+}
 
 /* === CURRENCY INFO (left side) === */
 .currency-info {
