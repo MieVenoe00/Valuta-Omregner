@@ -361,7 +361,7 @@ function buildCurrencyRow(code, index) {
 
 	row.innerHTML = `
     <div class="drag-handle" aria-label="Drag to reorder" role="button" tabindex="-1">
-      <span class="drag-dots"></span>
+      <div class="drag-dots"><span></span></div>
     </div>
     <div class="currency-info">
       <span class="currency-flag">${meta.flag}</span>
@@ -516,59 +516,22 @@ const drag = {
 	stepSize: 0, // row height + gap
 };
 
-const LONG_PRESS_MS = 400;
-
 function initDragHandle(row, handle) {
-	let pressTimer = null;
-	let didLongPress = false;
-
-	// Touch: long press anywhere on the row
-	row.addEventListener(
+	// { passive: false } is critical — lets us call preventDefault() to block iOS scroll
+	handle.addEventListener(
 		"touchstart",
 		(e) => {
-			if (e.target.closest("input, .remove-btn")) return;
-			didLongPress = false;
-			row.classList.add("long-press-active");
-			pressTimer = setTimeout(() => {
-				didLongPress = true;
-				row.classList.remove("long-press-active");
-				if (navigator.vibrate) navigator.vibrate(30);
-				startDrag(e, row);
-			}, LONG_PRESS_MS);
-		},
-		{ passive: true },
-	);
-
-	row.addEventListener("touchend", () => {
-		clearTimeout(pressTimer);
-		row.classList.remove("long-press-active");
-	});
-
-	row.addEventListener(
-		"touchmove",
-		() => {
-			clearTimeout(pressTimer);
-			row.classList.remove("long-press-active");
-		},
-		{ passive: true },
-	);
-
-	// Mouse: long press on the row (for desktop testing)
-	row.addEventListener("mousedown", (e) => {
-		if (e.target.closest("input, .remove-btn")) return;
-		if (e.button !== 0) return;
-		pressTimer = setTimeout(() => {
+			e.preventDefault(); // must be here, in the element listener, for iOS Safari
 			startDrag(e, row);
-		}, LONG_PRESS_MS);
-	});
+		},
+		{ passive: false },
+	);
 
-	row.addEventListener("mouseup", () => clearTimeout(pressTimer));
-	row.addEventListener("mouseleave", () => clearTimeout(pressTimer));
+	handle.addEventListener("mousedown", (e) => startDrag(e, row));
 }
 
 function startDrag(e, row) {
 	if (e.button !== undefined && e.button !== 0) return; // left button only
-	e.preventDefault();
 
 	const list = document.getElementById("currency-list");
 	const rows = [...list.querySelectorAll(".currency-row")];
