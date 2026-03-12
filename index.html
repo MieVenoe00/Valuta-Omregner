@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0d0d1f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="CozyFX" />
+  <meta name="description" content="A cozy pixel currency converter" />
+  <title>CozyFX ✦</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- p5.js background canvas -->
+  <div id="bg-canvas"></div>
+
+  <!-- App shell -->
+  <div id="app">
+
+    <!-- Header -->
+    <header id="header">
+      <div class="header-inner">
+        <div class="app-logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">CozyFX</span>
+        </div>
+        <div class="header-meta">
+          <span id="rate-status" class="rate-status" title="Exchange rate status">
+            <span class="status-dot"></span>
+            <span class="status-label">loading…</span>
+          </span>
+        </div>
+      </div>
+      <p class="header-sub">your cozy currency corner</p>
+    </header>
+
+    <!-- Main panel -->
+    <main id="main-panel">
+
+      <!-- Currency list -->
+      <div id="currency-list" class="currency-list">
+        <!-- Currency rows injected by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">🌙</div>
+        <p>No currencies yet.<br>Add one to get started!</p>
+      </div>
+
+    </main>
+
+    <!-- Footer area with add button -->
+    <footer id="footer">
+      <button id="add-currency-btn" class="add-btn" aria-label="Add currency">
+        <span class="add-btn-icon">＋</span>
+        <span class="add-btn-label">Add Currency</span>
+      </button>
+      <p class="footer-note" id="last-updated">rates updated just now</p>
+    </footer>
+
+  </div>
+
+  <!-- Add Currency Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Add currency">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Currency</h2>
+        <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      </div>
+
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="currency-search"
+          class="search-input"
+          placeholder="Search currencies…"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="all">All</button>
+        <button class="tab-btn" data-tab="favorites">★ Favorites</button>
+      </div>
+
+      <div id="currency-grid" class="currency-grid">
+        <!-- Currency items injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast hidden" role="alert"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('SW registered'))
+          .catch(err => console.log('SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

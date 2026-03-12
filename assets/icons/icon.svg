@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="#0d0d1f"/>
+  <!-- Outer glow ring -->
+  <rect width="512" height="512" rx="100" fill="none" stroke="#7b7bff" stroke-width="12" opacity="0.5"/>
+
+  <!-- Pixel grid decoration - small squares in corners -->
+  <rect x="40" y="40" width="12" height="12" fill="#c4b5fd" opacity="0.6"/>
+  <rect x="56" y="40" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+  <rect x="40" y="56" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+
+  <rect x="460" y="40" width="12" height="12" fill="#c4b5fd" opacity="0.6"/>
+  <rect x="444" y="40" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+  <rect x="460" y="56" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+
+  <rect x="40" y="460" width="12" height="12" fill="#c4b5fd" opacity="0.6"/>
+  <rect x="56" y="460" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+  <rect x="40" y="444" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+
+  <rect x="460" y="460" width="12" height="12" fill="#c4b5fd" opacity="0.6"/>
+  <rect x="444" y="460" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+  <rect x="460" y="444" width="12" height="12" fill="#7b7bff" opacity="0.3"/>
+
+  <!-- Stars -->
+  <circle cx="110" cy="130" r="3" fill="#eaeaff" opacity="0.7"/>
+  <circle cx="390" cy="100" r="2" fill="#c4b5fd" opacity="0.6"/>
+  <circle cx="420" cy="380" r="3" fill="#eaeaff" opacity="0.5"/>
+  <circle cx="80" cy="390" r="2" fill="#a78bfa" opacity="0.7"/>
+  <circle cx="200" cy="80" r="2" fill="#eaeaff" opacity="0.4"/>
+  <circle cx="320" cy="430" r="2" fill="#c4b5fd" opacity="0.5"/>
+
+  <!-- Central star symbol ✦ -->
+  <!-- Made from 4 diamond shapes -->
+  <polygon points="256,140 270,236 256,256 242,236" fill="#c4b5fd"/>
+  <polygon points="256,372 270,276 256,256 242,276" fill="#c4b5fd"/>
+  <polygon points="140,256 236,242 256,256 236,270" fill="#a78bfa"/>
+  <polygon points="372,256 276,242 256,256 276,270" fill="#a78bfa"/>
+
+  <!-- Center dot -->
+  <circle cx="256" cy="256" r="16" fill="#7b7bff"/>
+  <circle cx="256" cy="256" r="8"  fill="#eaeaff"/>
+
+  <!-- Glow effect -->
+  <circle cx="256" cy="256" r="90" fill="#7b7bff" opacity="0.06"/>
+  <circle cx="256" cy="256" r="60" fill="#7b7bff" opacity="0.08"/>
+</svg>
